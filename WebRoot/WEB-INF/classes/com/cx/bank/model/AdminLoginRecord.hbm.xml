@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cx.bank.model">
+	<class name="AdminLoginRecordBean" table="t_admin_login_record">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name"/>
+		<property name="password"/>
+		<property name="time"/>
+		<property name="type"/>
+		<!-- 
+		<many-to-one name="group" column="groupid" cascade="all"/>
+		 -->
+		 <many-to-one name="adminbean" column="recordid"/>
+	</class>
+</hibernate-mapping>

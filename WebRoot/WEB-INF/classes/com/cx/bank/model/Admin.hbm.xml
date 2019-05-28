@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cx.bank.model">
+	<class name="AdminBean" table="t_admin">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name" not-null="true"/>
+		<property name="password" not-null="true"/>
+		<set name="adminrecord" inverse="true" cascade="all">
+			<key column="adminid"/>
+			<one-to-many class="AdminRecordBean"/>
+		</set>
+	</class>
+</hibernate-mapping>

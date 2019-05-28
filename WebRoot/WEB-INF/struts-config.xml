@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm" type="com.cx.bank.forms.LoginActionForm"/>
+		<form-bean name="managerForm" type="com.cx.bank.forms.ManagerActionForm"></form-bean>
+	</form-beans>
+	
+	<global-exceptions>
+	   <exception key="error.exception" 
+                  type="com.cx.bank.util.ErrorCodeException"
+                  handler="com.cx.bank.util.ErrorCodeExceptionHandler"
+                  path="/WEB-INF/jsp/bank/error.jsp"/>    
+	
+	</global-exceptions>
+	
+	<global-forwards>
+		<forward name="index" path="/index.jsp" redirect="true"/>
+	</global-forwards>
+	
+ 	<action-mappings>
+
+		<action path="/login"
+				type="org.springframework.web.struts.DelegatingActionProxy"
+				name="loginForm"
+				scope="request"
+				parameter="command"
+		>
+			<forward name="success" path="/WEB-INF/jsp/bank/loginsuccess.jsp" />
+			<forward name="error" path="/WEB-INF/jsp/error.jsp" />
+			<forward name="user_success" path="/WEB-INF/jsp/bank/user_loginsuccess.jsp" />
+			<forward name="register_success" path="/WEB-INF/jsp/bank/success.jsp"/>
+			<forward name="register_error" path="/WEB-INF/jsp/Registererror.jsp"/>
+		</action>
+		
+		<action path="/manager"
+		        type="org.springframework.web.struts.DelegatingActionProxy"
+				name="managerForm"
+				scope="request"
+				parameter="command"
+		 >
+		 <forward name="inquiry" path="/WEB-INF/jsp/bank/addBank1.jsp"/>
+		 <forward name="withdrawals" path="/WEB-INF/jsp/bank/Withdrawals1.jsp"/>
+		 <forward name="deposit" path="/WEB-INF/jsp/bank/Deposit1.jsp"/>
+		 <forward name="transfer" path="/WEB-INF/jsp/bank/transfer1.jsp"/>
+		 <forward name="record" path="/WEB-INF/jsp/bank/record.jsp"/>
+		  <forward name="record1" path="/WEB-INF/jsp/bank/record1.jsp"/>
+		  <forward name="admin_record" path="/WEB-INF/jsp/bank/admin_record.jsp"/>
+		  <forward name="register_record" path="/WEB-INF/jsp/bank/register_record.jsp"/>
+		   <forward name="user_login_record" path="/WEB-INF/jsp/bank/user_login_record.jsp"/>
+		  <forward name="exit" path="/WEB-INF/jsp/bank/ExitSystem1.jsp"/>
+		 </action>
+ 		
+ 	
+ 		 <action path="/Withdrawals"
+ 				forward="/WEB-INF/jsp/bank/Withdrawals.jsp"
+ 				name="managerForm"
+ 		>
+ 		</action>
+ 		
+ 		 <action path="/Deposit"
+ 				forward="/WEB-INF/jsp/bank/Deposit.jsp"
+ 				name="managerForm"
+ 		>
+ 		</action>
+ 		
+ 		 <action path="/Transfer"
+ 				forward="/WEB-INF/jsp/bank/transfer.jsp"
+ 				name="managerForm"
+ 		>
+ 		</action>
+ 		
+ 		 <action path="/Exitsystem"
+ 				forward="/WEB-INF/jsp/bank/ExitSystem1.jsp"
+ 		>
+ 		</action>
+ 	
+ 	    <action path="/changelang"
+				type="org.springframework.web.struts.DelegatingActionProxy"
+		>
+			<forward name="index" path="/index.jsp"/>
+		</action>
+		
+	</action-mappings>
+ 
+    <message-resources parameter="MessageResources" />
+</struts-config>

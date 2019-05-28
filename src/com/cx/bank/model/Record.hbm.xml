@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cx.bank.model">
+	<class name="RecordBean" table="t_record">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name"/>
+		<property name="type"/>
+		<property name="rmoney"/>
+		<property name="time"/>
+		 <many-to-one name="userbean" column="userid"/> 
+	</class>
+</hibernate-mapping>
